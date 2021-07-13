@@ -2,7 +2,7 @@ import React from 'react';
 import ItemList from '../itemList/itemList';
 import InputItem from '../InputItem/inputItem';
 import Footer from '../Footer/footer';
-import ./App.css;
+import './App.css';
 
 const todoItem = 'Make the App';
 const counter = 3;
