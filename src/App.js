@@ -1,16 +1,4 @@
-<<<<<<< Updated upstream
-import React from 'react';
-
-const element = (<div>
-  Hello world!
-  <a href="">Button</a>
-</div>);
-
-export { element };
-=======
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 const count = 88;
 const perem = 'Переменная';
@@ -50,13 +38,3 @@ class App extends Component {
 }
 
 export default App;
-=======
-import React from 'react';
-
-const element = (<div>
-  Hello world!
-  <a href="">Button</a>
-</div>);
-
-export { element };
->>>>>>> Stashed changes
