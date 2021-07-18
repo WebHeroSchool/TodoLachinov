@@ -4,6 +4,7 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import './App.css';
 
+
 const todoItem = 'Make the App';
 const counter = 3;
 
