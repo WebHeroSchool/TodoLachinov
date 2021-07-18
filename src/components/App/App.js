@@ -13,4 +13,5 @@ const App = () => (<div>
   <Footer counter = {counter} />
 </div>);
 
+
 export default App;
