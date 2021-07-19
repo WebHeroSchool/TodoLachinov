@@ -11,4 +11,8 @@ const Item = ({ value, isDone }) => (<span className={
     {value} 
 </span>);
 
+
+const Item = () => (<span> Очень важное дело! </span>);
+
+                    
 export default Item;

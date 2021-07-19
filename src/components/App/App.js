@@ -3,6 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 
+
 const todoItem = 'Make the App';
 const counter = 3;
 
@@ -29,5 +30,6 @@ const App = () => {
     <Footer counter = {counter} />
   </div>);
 }
+
 
 export default App;
