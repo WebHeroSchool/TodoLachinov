@@ -1,0 +1,14 @@
+.wrap {
+    margin: 0 auto;
+    width: 600px;
+    border: 1px solid rgb(196, 22, 22);
+	box-shadow: 1px 0px 39px -12px #757575;
+	font-family: Arial;
+	background-color: #FFF;
+}
+
+.title {
+    color: #12082b;
+	text-align: center;
+    font-family: Arial;
+}
