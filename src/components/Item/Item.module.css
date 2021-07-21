@@ -1,6 +1,7 @@
 .item {
     display: flex;
     align-items: center;
+	list-style-type: none;
     color: black;
     width: 50%;
 }
