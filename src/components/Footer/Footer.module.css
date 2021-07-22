@@ -1,4 +1,5 @@
-.footer {
+.footer
+{
     display: flex;
     justify-content: center;
 	color:  #1c0527;
