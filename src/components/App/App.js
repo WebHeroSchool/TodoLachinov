@@ -6,7 +6,6 @@ import styles from './App.module.css';
 
 const counter = 3;
 
-
 const App = () => {
   const items = [
     {
@@ -30,6 +29,5 @@ const App = () => {
     <Footer counter = {counter} />
   </div>);
 }
-
 
 export default App;
