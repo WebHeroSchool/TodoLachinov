@@ -11,12 +11,15 @@ const App = () => {
   const items = [
     {
       value: 'Make the app',
+      isDone: true,
     },
     {
       value: 'Check it',
+      isDone: false,
     },
     {
       value: 'Make pull request',
+      isDone: false,
     }
   ];
 
@@ -27,8 +30,6 @@ const App = () => {
     <Footer counter = {counter} />
   </div>);
 }
-
-
 
 
 export default App;
