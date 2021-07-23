@@ -4,35 +4,31 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 
+
 const counter = 3;
 
-class App extends React.Component {
-  render() {
-      const items = [
-        {
-          value: 'Make the app',
-          isDone: true,
-        },
-        {
-          value: 'Check it',
-          isDone: false,
-        },
-        {
-          value: 'Make pull request',
-          isDone: false,
-        }
-      ];
-    
-
-      return (<div className = {styles.wrap}> 
-        <h1 className = {styles.title} >Important actions:</h1>
-        <InputItem />
-        <ItemList items = {items} />
-        <Footer counter = {counter} />
-      </div>);
+const App = () => {
+  const items = [
+    {
+      value: 'Make the app',
+    },
+    {
+      value: 'Check it',
+    },
+    {
+      value: 'Make pull request',
     }
+  ];
+
+  return (<div className = {styles.wrap}> 
+    <h1 className = {styles.title} >Important actions:</h1>
+    <InputItem />
+    <ItemList items = {items} />
+    <Footer counter = {counter} />
+  </div>);
 }
-  
+
+
 
 
 export default App;
