@@ -4,31 +4,52 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 
-
 const counter = 3;
 
-const App = () => {
-  const items = [
-    {
-      value: 'Make the app',
-    },
-    {
-      value: 'Check it',
-    },
-    {
-      value: 'Make pull request',
-    }
-  ];
+class App extends React.Component {
+  state = {
+    items: [
+      {
+        value: 'Make the app',
+        isDone: true,
+        id: 1
+      },
+      {
+        value: 'Check it',
+        isDone: false,
+        id: 2
+      },
+      {
+        value: 'Make pull request',
+        isDone: false,
+        id: 3
+      }
+    ]
+  };
 
-  return (<div className = {styles.wrap}> 
-    <h1 className = {styles.title} >Important actions:</h1>
-    <InputItem />
-    <ItemList items = {items} />
-    <Footer counter = {counter} />
-  </div>);
+  onClickDone = id => {
+    const newItemList = this.state.items.map(item => {
+      const newItem = { ... item };
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
+
+      return newItem;
+    })
+
+    this.setState({ items: newItemList});
+  };
+  
+  render() {
+      return (
+      <div className = {styles.wrap}> 
+        <h1 className = {styles.title} >Important actions:</h1>
+        <InputItem />
+        <ItemList items = {this.state.items} onClickDone={this.onClickDone}/>
+        <Footer counter = {counter} />
+      </div>);
+  }
 }
-
-
-
+  
 
 export default App;
