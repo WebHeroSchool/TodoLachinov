@@ -7,16 +7,33 @@ import styles from './App.module.css';
 
 const counter = 3;
 
-const App = () => {
-  const items = [
-    {
-      value: 'Make the app',
-    },
-    {
-      value: 'Check it',
-    },
-    {
-      value: 'Make pull request',
+class App extends React.Component {
+  state = {
+    items: [
+      {
+        value: 'Make the app',
+        isDone: true,
+      },
+      {
+        value: 'Check it',
+        isDone: false,
+      },
+      {
+        value: 'Make pull request',
+        isDone: false,
+      }
+    ]
+  };
+
+  onClickDone = isDone => console.log(isDone);
+  
+  render() {
+      return (<div className = {styles.wrap}> 
+        <h1 className = {styles.title} >Important actions:</h1>
+        <InputItem />
+        <ItemList items = {this.state.items} onClickDone={this.onClickDone}/>
+        <Footer counter = {counter} />
+      </div>);
     }
   ];
 
