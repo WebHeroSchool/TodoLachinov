@@ -36,8 +36,6 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.12.1",
-    "@material-ui/icons": "^4.11.2",
     "classnames": "^2.3.1"
   }
 }
