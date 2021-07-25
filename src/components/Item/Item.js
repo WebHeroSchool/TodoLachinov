@@ -8,7 +8,7 @@ const Item = ({ value, isDone, onClickDone }) =>
     <input className={styles.click}
         type = 'checkbox'
         checked={isDone}
-        onClick={() => (onClickDone (isDone))}
+        onChange={() => (onClickDone (isDone))}
     />
 
     <span className={
