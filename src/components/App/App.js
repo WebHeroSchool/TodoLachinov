@@ -4,32 +4,61 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 
-
 const counter = 3;
 
-const App = () => {
-  const items = [
-    {
-      value: 'Make the app',
+class App extends React.Component {
+  state = {
+    items: [
+      {
+        value: 'Make the app',
+        isDone: true,
+        id: 1
+      },
+      {
+        value: 'Check it',
+        isDone: false,
+        id: 2
+      },
+      {
+        value: 'Make pull request',
+        isDone: false,
+        id: 3
+      }
+    ]
+  };
 
-      isDone: true,
-    },
-    {
-      value: 'Check it',
-      isDone: false,
-    },
-    {
-      value: 'Make pull request',
-      isDone: false,
-    }
-  ];
+  onClickDone = id => {
+    const newItemList = this.state.items.map(item => {
+      const newItem = { ... item };
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
 
-  return (<div className = {styles.wrap}> 
-    <h1 className = {styles.title} >Important actions:</h1>
-    <InputItem />
-    <ItemList items = {items} />
-    <Footer counter = {counter} />
-  </div>);
+      return newItem;
+    })
+
+    this.setState({ items: newItemList});
+  };
+  
+  onClickDelete = id => {
+    const newItemList = this.state.items.filter(item => item.id !== id);
+    this.setState({ items: newItemList});
+  }
+
+  render() {
+      return (
+      <div className = {styles.wrap}> 
+        <h1 className = {styles.title} >Important actions:</h1>
+        <InputItem />
+        <ItemList 
+          items = {this.state.items} 
+          onClickDone={this.onClickDone}
+          onClickDelete={this.onClickDelete}
+        />
+        <Footer counter = {counter} />
+      </div>);
+  }
 }
+  
 
 export default App;
