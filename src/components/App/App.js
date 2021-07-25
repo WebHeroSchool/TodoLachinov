@@ -35,16 +35,7 @@ class App extends React.Component {
         <Footer counter = {counter} />
       </div>);
     }
-  ];
-
-  return (<div className = {styles.wrap}> 
-    <h1 className = {styles.title} >Important actions:</h1>
-    <InputItem />
-    <ItemList items = {items} />
-    <Footer counter = {counter} />
-  </div>);
 }
-
 
 
 
