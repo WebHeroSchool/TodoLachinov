@@ -4,10 +4,10 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 
-const counter = 3;
 
 class App extends React.Component {
   state = {
+    hasError: false,
     items: [
       {
         value: 'Make the app',
@@ -24,12 +24,13 @@ class App extends React.Component {
         isDone: false,
         id: 3
       }
-    ]
+    ],
+    count: 3
   };
 
   onClickDone = id => {
     const newItemList = this.state.items.map(item => {
-      const newItem = { ... item };
+      const newItem = { ...item };
       if (item.id === id) {
         newItem.isDone = !item.isDone;
       }
@@ -37,28 +38,45 @@ class App extends React.Component {
       return newItem;
     })
 
-    this.setState({ items: newItemList});
+    this.setState({ items: newItemList });
   };
-  
-  onClickDelete = id => {
-    const newItemList = this.state.items.filter(item => item.id !== id);
-    this.setState({ items: newItemList});
+
+  onClickDelete = id => this.setState(state => ({ items: state.items.filter(item => item.id !== id) }));
+
+  onClickAdd = value => {
+    if (value !== '') {
+      this.setState(state => ({
+        items: [
+          ...state.items,
+          {
+            value,
+            isDone: false,
+            id: state.count + 1
+          }
+        ],
+        count: state.count + 1,
+        hasError: false
+      }));
+    } else {
+      this.setState(state => ({ hasError: true }))
+    }
   }
 
   render() {
-      return (
-      <div className = {styles.wrap}> 
-        <h1 className = {styles.title} >Important actions:</h1>
-        <InputItem />
-        <ItemList 
-          items = {this.state.items} 
+    const casesCount = this.state.items.filter(item => item.isDone === false);
+    return (
+      <div className={styles.wrap}>
+        <h1 className={styles.title} >Important actions:</h1>
+        <InputItem onClickAdd={this.onClickAdd} hasError={this.state.hasError}/>
+        <ItemList
+          items={this.state.items}
           onClickDone={this.onClickDone}
           onClickDelete={this.onClickDelete}
         />
-        <Footer counter = {counter} />
+        <Footer casesCount={casesCount.length} />
       </div>);
   }
 }
-  
+
 
 export default App;
