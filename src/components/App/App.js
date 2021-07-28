@@ -7,7 +7,7 @@ import styles from './App.module.css';
 
 class App extends React.Component {
   state = {
-    hasError: false,
+    error: false,
     items: [
       {
         value: 'Make the app',
@@ -55,10 +55,10 @@ class App extends React.Component {
           }
         ],
         count: state.count + 1,
-        hasError: false
+        error: false
       }));
     } else {
-      this.setState(state => ({ hasError: true }))
+      this.setState(state => ({ error: true }))
     }
   }
 
@@ -67,7 +67,7 @@ class App extends React.Component {
     return (
       <div className={styles.wrap}>
         <h1 className={styles.title} >Important actions:</h1>
-        <InputItem onClickAdd={this.onClickAdd} hasError={this.state.hasError}/>
+        <InputItem onClickAdd={this.onClickAdd} error={this.state.error}/>
         <ItemList
           items={this.state.items}
           onClickDone={this.onClickDone}
