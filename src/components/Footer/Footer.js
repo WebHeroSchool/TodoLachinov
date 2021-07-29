@@ -9,4 +9,5 @@ Footer.propTypes = {
     casesCount: PropTypes.number.isRequired
 };
 
+
 export default Footer;
