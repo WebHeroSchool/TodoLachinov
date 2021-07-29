@@ -17,7 +17,6 @@ class InputItem extends React.Component {
         this.props.onClickAdd(this.state.inputValue.toUpperCase());
     }
 
-
     render() {
         const { onClickAdd } = this.props;
         const isError = this.props.error;
@@ -71,3 +70,4 @@ InputItem.propTypes = {
 };
 
 export default InputItem; 
+
