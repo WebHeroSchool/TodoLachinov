@@ -45,4 +45,9 @@ Item.propTypes = {
     value: PropTypes.string.isRequired
 };
 
+Item.defaultProps = {
+    value: "No name",
+    isDone: true
+};
+
 export default Item;

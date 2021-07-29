@@ -72,6 +72,4 @@ InputItem.propTypes = {
     ])
 };
 
-
-export default InputItem; 
-
+export default InputItem;

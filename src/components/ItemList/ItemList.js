@@ -4,6 +4,7 @@ import styles from './ItemList.module.css';
 import PropTypes from 'prop-types';
 
 const ItemList = ({ items, onClickDone, onClickDelete }) => (<ul>
+
   {items.map(item =>
     <li className={styles.itemList} key={item.id}>
       <Item
