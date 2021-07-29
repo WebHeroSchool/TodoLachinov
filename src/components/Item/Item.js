@@ -32,7 +32,11 @@ Item.defaultProps = {
 };
 
 Item.propTypes = {
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
+    isDone: PropTypes.bool.isRequired,
+    onClickDone: PropTypes.func.isRequired,
+    onClickDelete: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
 };
 
 export default Item;
