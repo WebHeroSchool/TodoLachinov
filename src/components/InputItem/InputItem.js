@@ -67,7 +67,7 @@ class InputItem extends React.Component {
 };
 
 InputItem.propTypes = {
-    value: PropTypes.oneOfType ([
+    OnClickAdd: PropTypes.oneOfType ([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired
     ])
