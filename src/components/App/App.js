@@ -3,6 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
+import PropTypes from 'prop-types';
 
 
 class App extends React.Component {
@@ -26,6 +27,15 @@ class App extends React.Component {
       }
     ],
     count: 3
+  };
+
+  componentDidMount() {
+    console.log('ComponentDidMount');
+  };
+
+  componentDidUpdate() {
+    console.log('ComponentDidUpdate');
+
   };
 
   onClickDone = id => {
@@ -62,6 +72,10 @@ class App extends React.Component {
     }
   }
 
+  componentWillUnmount () {
+    console.log ('componentWillUnmount');
+  };
+
   render() {
     const casesCount = this.state.items.filter(item => item.isDone === false);
     return (
@@ -77,6 +91,13 @@ class App extends React.Component {
       </div>);
   }
 }
+
+App.propTypes = {
+  value: PropTypes.oneOfType ([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired
+  ])
+};
 
 
 export default App;
