@@ -35,6 +35,7 @@ class App extends React.Component {
 
   componentDidUpdate() {
     console.log('ComponentDidUpdate');
+
   };
 
   onClickDone = id => {
@@ -51,7 +52,6 @@ class App extends React.Component {
   };
 
   onClickDelete = id => this.setState(state => ({ items: state.items.filter(item => item.id !== id) }));
-
 
   onClickAdd = value => {
     if (value !== '') {
@@ -98,5 +98,6 @@ App.propTypes = {
       PropTypes.number.isRequired
   ])
 };
+
 
 export default App;

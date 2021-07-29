@@ -6,7 +6,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import styles from './Item.module.css';
 import PropTypes from 'prop-types';
 
-
 class Item extends React.Component {
 
     componentWillUnmount() {
