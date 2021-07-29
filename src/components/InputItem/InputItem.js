@@ -19,12 +19,12 @@ class InputItem extends React.Component {
 
     render() {
         const { onClickAdd } = this.props;
-        const isError = this.props.hasError;
+        const isError = this.props.error;
         let textField;
 
         if (isError) {
             textField = <TextField
-                hasError
+                error
                 id='outlined-error'
                 label='Add something!'
                 margin='dense'
@@ -65,4 +65,6 @@ class InputItem extends React.Component {
     }
 };
 
+
 export default InputItem;
+
