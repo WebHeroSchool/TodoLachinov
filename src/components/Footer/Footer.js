@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
 
-const Footer = ({ counter }) => (<div className={styles.footer}> The number of actions left: { counter }</div>);
+const Footer = ({ casesCount }) => (<div className={styles.footer}> The number of actions left: { casesCount }</div>);
 
 export default Footer;
