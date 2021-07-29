@@ -11,7 +11,7 @@ Footer.defaultProps = {
 
 
 Footer.propTypes = {
-    casesCount: PropTypes.number.isRequired
+    count: PropTypes.number.isRequired
 };
 
 
