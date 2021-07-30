@@ -42,15 +42,6 @@ Item.defaultProps = {
 };
 
 Item.propTypes = {
-    value: PropTypes.string.isRequired
-};
-
-Item.defaultProps = {
-    value: "No name",
-    isDone: true
-};
-
-Item.propTypes = {
     value: PropTypes.string.isRequired,
     isDone: PropTypes.bool.isRequired,
     onClickDone: PropTypes.func.isRequired,
