@@ -29,6 +29,7 @@ class App extends React.Component {
     count: 3
   };
 
+
   onClickDone = id => {
     const newItemList = this.state.items.map(item => {
       const newItem = { ...item };
@@ -43,7 +44,6 @@ class App extends React.Component {
   };
 
   onClickDelete = id => this.setState(state => ({ items: state.items.filter(item => item.id !== id) }));
-
 
   onClickAdd = value => {
     if (value !== '') {
@@ -79,7 +79,7 @@ class App extends React.Component {
           onClickDone={this.onClickDone}
           onClickDelete={this.onClickDelete}
         />
-        <Footer casesCount={casesCount.length} />
+        <Footer />
       </div>);
   }
 }
@@ -90,5 +90,6 @@ App.propTypes = {
       PropTypes.number.isRequired
   ])
 };
+
 
 export default App;
