@@ -29,14 +29,6 @@ class App extends React.Component {
     count: 3
   };
 
-  componentDidMount() {
-    console.log('ComponentDidMount');
-  };
-
-  componentDidUpdate() {
-    console.log('ComponentDidUpdate');
-  };
-
   onClickDone = id => {
     const newItemList = this.state.items.map(item => {
       const newItem = { ...item };
@@ -72,8 +64,8 @@ class App extends React.Component {
     }
   }
 
-  componentWillUnmount () {
-    console.log ('componentWillUnmount');
+  componentDidMount() {
+    this.timerID = setInterval(() => console.log('interval'), 1000);
   };
 
   render() {

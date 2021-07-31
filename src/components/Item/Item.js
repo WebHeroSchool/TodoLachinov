@@ -8,11 +8,15 @@ import PropTypes from 'prop-types';
 
 
 class Item extends React.Component {
-
-    componentWillUnmount() {
-        console.log('ComponentWillUnmount');
+    componentDidMount() {
+        this.timerID = setInterval(() => console.log('interval'), 1000);
     };
 
+    componentWillUnmount () {
+        clearInterval(this.timerID);
+        console.log('clear interval');
+    };
+    
     render() {
         const { value, isDone, onClickDone, onClickDelete, id } = this.props;
 
