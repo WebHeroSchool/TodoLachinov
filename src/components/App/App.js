@@ -63,11 +63,7 @@ class App extends React.Component {
       this.setState(state => ({ error: true }))
     }
   }
-
-  componentDidMount() {
-    this.timerID = setInterval(() => console.log('interval'), 1000);
-  };
-
+  
   render() {
     const casesCount = this.state.items.filter(item => item.isDone === false);
     return (
