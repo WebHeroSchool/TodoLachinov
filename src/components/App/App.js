@@ -29,14 +29,6 @@ class App extends React.Component {
     count: 3
   };
 
-  componentDidMount() {
-    console.log('ComponentDidMount');
-  };
-
-  componentDidUpdate() {
-    console.log('ComponentDidUpdate');
-
-  };
 
   onClickDone = id => {
     const newItemList = this.state.items.map(item => {
@@ -71,11 +63,7 @@ class App extends React.Component {
       this.setState(state => ({ error: true }))
     }
   }
-
-  componentWillUnmount () {
-    console.log ('componentWillUnmount');
-  };
-
+  
   render() {
     const casesCount = this.state.items.filter(item => item.isDone === false);
     return (
