@@ -1,85 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import ItemList from '../ItemList/ItemList';
-import InputItem from '../InputItem/InputItem';
-import Footer from '../Footer/Footer';
+import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
 import styles from './App.module.css';
 import PropTypes from 'prop-types';
+import About from '../About/About';
+import Todo from '../Todo/Todo';
+import Contacts from '../Contacts/Contacts';
 
 
-const App = () => {
-  const initialState = {
-    error: false,
-    items: [
-      {
-        value: 'Make the app',
-        isDone: true,
-        id: 1
-      },
-      {
-        value: 'Check it',
-        isDone: false,
-        id: 2
-      },
-      {
-        value: 'Make pull request',
-        isDone: false,
-        id: 3
-      }
-    ],
-    count: 3
-  };
-
-  const [items, setItems] = useState(initialState.items);
-  const [count, setCount] = useState(initialState.count);
-
-  useEffect(() => { console.log('componentDidMount') }, []);
-  useEffect(() => { console.log('componentDidUpdate') });
-
-  const onClickDone = id => {
-    const newItemList = items.map(item => {
-      const newItem = { ...item };
-      if (item.id === id) {
-        newItem.isDone = !item.isDone;
-      }
-
-      return newItem;
-    })
-
-    setItems(newItemList);
-  };
-
-  const onClickDelete = id => {
-    const newItemList = items.filter(item => item.id !== id);
-    setItems(newItemList);
-  }
-
-
-  const onClickAdd = value => {
-    const newItemList = [
-      ...items,
-      {
-        value,
-        isDone: false,
-        id: count + 1
-      }
-    ];
-    setItems(newItemList);
-    setCount(count => count + 1);
-  }
-
-  const casesCount = items.filter(item => item.isDone === false);
-  return (
+const App = () => 
+(<Router>
     <div className={styles.wrap}>
-      <h1 className={styles.title} >Important actions:</h1>
-      <InputItem onClickAdd={onClickAdd} />
-      <ItemList
-        items={items}
-        onClickDone={onClickDone}
-        onClickDelete={onClickDelete}
-      />
-      <Footer casesCount={casesCount.length} />
-    </div>);
-}
+        <Card className={styles.wrapper}>
+            <MenuList>
+                <Link to='/' className={styles.link}><MenuItem> About me </MenuItem></Link>
+                <Link to='/todo' className={styles.link}><MenuItem> Todo </MenuItem></Link>
+                <Link to='/contacts' className={styles.link}><MenuItem> Contacts </MenuItem></Link>
+            </MenuList>
+        </Card>
+        <Card className={styles.wrapperTwo}>
+            <Route path='/' exact component={About} />
+            <Route path='/todo' component={Todo} />
+            <Route path='/contacts' component={Contacts} />
+        </Card>
+    </div>
+</Router>);
+
 
 App.propTypes = {
   value: PropTypes.oneOfType([
@@ -89,3 +37,5 @@ App.propTypes = {
 };
 
 export default App;
+
+
