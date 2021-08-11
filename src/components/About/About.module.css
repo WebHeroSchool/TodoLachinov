@@ -1,0 +1,10 @@
+.box {
+	margin: auto;
+	width: 700px;
+}
+
+.title {
+	position: relative;
+	text-align: center;
+	color:#462e12;;
+}

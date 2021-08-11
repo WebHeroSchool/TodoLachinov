@@ -1,14 +1,25 @@
 .wrap {
+    display: flex;
     margin: 0 auto;
-    width: 900px;
-    border: 1px solid rgb(196, 22, 22);
+    width: 1000px;
+    border: 1px solid rgb(10, 4, 4);
 	box-shadow: 1px 0px 39px -12px #757575;
-	font-family: Arial;
+	font-family: Helvetica;
 	background-color: #FFF;
+}
+
+.wrapper {
+    display: flex;
+    width: 200px;
 }
 
 .title {
     color: #12082b;
 	text-align: center;
-    font-family: Arial;
+}
+
+.link {
+    font-size: 30px;
+    color: black;
+    text-decoration: none;
 }

@@ -1,0 +1,12 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 800px;
+	padding: 2%;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
