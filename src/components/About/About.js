@@ -1,20 +1,62 @@
 import React from 'react';
-import PropTypes  from 'prop-types';
-import styles from'./About.module.css';
+import styles from './About.module.css';
+import { Octokit } from '@octokit/rest';
+import Preload from '../Preloader/Preloader'
 
+const octokit = new Octokit();
+const about = 'My repositories';
 
-const About = ({ about }) => (
-	<div className={styles.box}>
-		<h1 className={styles.title}> {about} </h1>
-	</div>
-)
+class About extends React.Component {
+	state = {
+		isLoading: true,
+		repoList: [],
+		userInfo: ''
+	}
 
-About.defaultProps = {
-	about: "Emil Lachinov"
-}
+	componentDidMount() {
+		octokit.rest.repos.listForUser({
+			username: 'EmilLachinov8'
+		})
+		.then(({ data }) => {
+			this.setState({
+				repoList: data,
+				isLoading: false
+			});
+		},
+		(error) => {
+			this.setState({
+				isLoading: false,
+				error
+			});
+		},
+		octokit.rest.users.getByUsername({
+			username: 'EmilLachinov8'
+		})
+		.then(({ data }) => {
+			this.setState({
+				userInfo: data,
+				isLoading: false
+			});
+		}))
+	}
 
-About.propTypes = {
-	about: PropTypes.string
+	render() {
+		const { isLoading, repoList, error } = this.state;
+		if (error) {
+			return (<div> Error: {error.message} </div>)
+		} else {
+			return (
+				<div className={styles.box}>
+					<h1 className={styles.title}> {isLoading ? <Preload /> : about} </h1>
+					{!isLoading && <ol>
+						{repoList.map(repo => (<li key={repo.id}>
+							<a href={repo.html_url}>{repo.name}</a>
+						</li>))}
+					</ol>}
+				</div>
+			)
+		}
+	}	
 }
 
 export default About;
