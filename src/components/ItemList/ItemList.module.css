@@ -1,8 +1,16 @@
-.itemList {
-	display: flex;
-	justify-content: center;
-	margin: 0 auto;
-	margin-right: 2%;
-    padding: 0 0 30px 0;
+.wrapTasks {
+  font-size: .9em;
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
 }
 
+@media screen and (min-width: 270px) and (max-width: 575px) {
+  .wrapTasks {
+    padding: 0;
+  }
+
+  .item {
+    font-size: .5em;
+  }
+}
