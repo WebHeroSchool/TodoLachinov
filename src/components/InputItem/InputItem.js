@@ -1,76 +1,58 @@
 import React from 'react';
+import styles from './InputItem.module.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import styles from './InputItem.module.css';
-import PropTypes from 'prop-types';
 
 class InputItem extends React.Component {
-    state = {
-        inputValue: ''
-    };
+  state = {
+    inputValue: '',
+    error: false,
+    helperText: ''
+  };
 
-    onButtonClick = () => {
-        this.setState({
-            inputValue: ''
-        })
+  onButtonClick = () => {
+    this.setState({inputValue: ''});
+    const isHave = items => items.value === this.state.inputValue;
 
-        this.props.onClickAdd(this.state.inputValue.toUpperCase());
+    if (this.state.inputValue === '') {
+      this.setState({error: true, helperText: 'Full this area'});
+    } else if (this.props.Items.some(isHave)) {
+      this.setState({error: true, helperText: 'You already have this kind of task. Choose another one'});
+    } else {
+      this.props.onClickAdd(this.state.inputValue);
     }
+  };
 
-    render() {
-        const { onClickAdd } = this.props;
-        const isError = this.props.error;
-        let textField;
+  render() {
 
-        if (isError) {
-            textField = <TextField
-                error
-                id='outlined-error'
-                label='Add something!'
-                margin='dense'
-                variant='outlined'
-                className={styles.field}
-                value={this.state.inputValue}
-                onChange={event => this.setState({ inputValue: event.target.value })}
-            />
-        } else {
-            textField = <TextField
-                id='outlined-dense'
-                label='Add new task'
-                margin='dense'
-                variant='outlined'
-                className={styles.field}
-                value={this.state.inputValue}
-                onChange={event => this.setState({ inputValue: event.target.value })}
-            />
-        }
+    return (
+      
+      <div className={styles.inputWrap}>
+        <TextField
+          className={styles.inputValue}
+          error={this.state.error}
+          helperText={this.state.helperText}
+          id='standard-basic'
+          variant='outlined'
+          label='Add new task'
+          margin="dense"
+          InputProps={{
+            style:{borderRadius: 5}
+          }}
+          value={this.state.inputValue}
+          onChange={event => this.setState({ inputValue: event.target.value, error: false, helperText: '' })}
+        />
 
-        return (
-            <div className={styles.input}>
-                <div className={styles.field}>
-                    {textField}
-                </div >
-                <div className={styles.button}> 
-                    <Button
-                    variant='contained'
-                    color='primary'
-                    className={styles.frame}
-                    onClick={this.onButtonClick}
-                >
-                    <div>Add</div>
-                </Button>
-                </div>
-            </div>
-        );
-    }
+        <Button
+          className={styles.inputButton}
+          variant="contained"
+          onClick={this.onButtonClick}
+        >
+          add
+        </Button>
+      </div>
+    )
+  }
 };
 
-InputItem.propTypes = {
-    value: PropTypes.oneOfType ([
-        PropTypes.string.isRequired,
-        PropTypes.number.isRequired
-    ])
-};
-
-
-export default InputItem; 
+export default InputItem;

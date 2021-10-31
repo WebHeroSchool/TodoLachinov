@@ -1,28 +1,32 @@
 import React from 'react';
-import Item from '../Item/Item';
-import styles from './ItemList.module.css';
 import PropTypes from 'prop-types';
+import Item from '../Item/Item';
 
-const ItemList = ({ items, onClickDone, onClickDelete }) => (<ul>
-  {items.map(item =>
-    <li className={styles.itemList} key={item.id}>
-      <Item
-        value={item.value}
-        isDone={item.isDone}
-        id={item.id}
-        onClickDone={onClickDone}
-        onClickDelete={onClickDelete}
-      />
-    </li>)}
-</ul>);
+import styles from './ItemList.module.css'
 
-ItemList.defaultProps = {
-  value: "No name",
-  id: 0
+const ItemList = ({ Items, onClickDone, onClickDelete, onClickSelected, selectedId }) => {
+  return (
+    <ul className={styles.wrapTasks}>
+      {Items.map((item) => (<li key={item.id} className={styles.tasks}>
+        <Item
+          value={item.value}
+          isDone={item.isDone}
+          id={item.id}
+          onClickDone={onClickDone}
+          onClickDelete={onClickDelete}
+          onClickSelected={onClickSelected}
+          selectedId={selectedId}
+          key= {item.id}
+        />
+      </li>))}
+    </ul>
+  )
 };
 
 ItemList.propTypes = {
-  items: PropTypes.array.isRequired
-};
+  Items: PropTypes.array.isRequired,
+  onClickDone: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired
+}
 
 export default ItemList;
