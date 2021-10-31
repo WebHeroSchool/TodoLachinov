@@ -1,25 +1,15 @@
-.button {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.field {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    width: 65%;
+.inputButton {
+  background-color: #3fb5a1;
 }
 
-.input {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.frame {
-    width: 42%;
+@media screen and (min-width: 270px) and (max-width: 575px) {
+  .inputWrap {
+    margin-bottom: 15px;
+  }
 }

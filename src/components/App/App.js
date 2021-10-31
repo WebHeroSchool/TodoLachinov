@@ -1,41 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Card from '@material-ui/core/Card';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
-import styles from './App.module.css';
-import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+
 import About from '../About/About';
-import Todo from '../Todo/Todo';
-import Contacts from '../Contacts/Contacts';
+import ToDo from '../ToDo/ToDo';
 
+import styles from'./App.module.css';
+import Card from "@material-ui/core/Card";
 
-const App = () => 
-(<Router>
+const App = () => (
+  <Router>
+
     <div className={styles.wrap}>
-        <Card className={styles.wrapper}>
-            <MenuList>
-                <Link to='/' className={styles.link}><MenuItem> About me </MenuItem></Link>
-                <Link to='/todo' className={styles.link}><MenuItem> Todo </MenuItem></Link>
-                <Link to='/contacts' className={styles.link}><MenuItem> Contacts </MenuItem></Link>
-            </MenuList>
-        </Card>
-        <Card className={styles.wrapperTwo}>
-            <Route path='/' exact component={About} />
-            <Route path='/todo' component={Todo} />
-            <Route path='/contacts' component={Contacts} />
-        </Card>
+
+      <Card className={styles.sidebar}>
+          <NavLink exact to='/' className={styles.link} activeClassName={styles.active_link}>About me</NavLink>
+          <NavLink to='/todo' className={styles.link} activeClassName={styles.active_link}>TO DO</NavLink>
+      </Card>
+
+      <div className = {styles.content}>
+        <Route path='/' exact component={About}/>
+        <Route path='/todo' component={ToDo}/>
+      </div>
+
     </div>
-</Router>);
 
+  </Router>);
 
-App.propTypes = {
-  value: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.number.isRequired
-  ])
-};
 
 export default App;
-
-
